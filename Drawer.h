@@ -31,11 +31,6 @@ class Drawer2
         Drawer2();        
         ~Drawer2();
 
-        std::vector<double> GenerateTrajectory(double d_xd,              // Desired trajectory point
-                                               double d_sample_time,     // Sample time of control loop
-                                               int i_num_points         // Number of points of desired trajectory
-                                               );
-
         std::vector<double> GenerateTrajectoryWithMultipleSegments(std::vector<double> d_xd,      // Desired trajectory point
                                                                    double d_sample_time,          // Sample time of control loop
                                                                    std::vector<int> i_num_points // Number of points of desired trajectory
@@ -47,10 +42,6 @@ class Drawer2
         int GetTrajectoryCounter();                         // Get the actual trajectory counter
 
         void IncreaseMultiSegmentTrajectoryCounter();        // Increase trajectory counter of trajectory with multiple segments
-
-        void IncreaseTrajectoryCounter();                   // Increase by 1 the trajectory counter
-
-        int GetTrajectorySize();                            // Get the number of points from the single point trajectory
 
         void PrintTrajectoryToFile(std::string output_dir = __FILE__,                   // Print trajectory to file as a vector of doubles
                                    std::string subfolders = "", 

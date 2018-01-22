@@ -24,34 +24,6 @@ Drawer2::~Drawer2()
 }
 
 //----------------------------------------------------------------------------
-std::vector<double> Drawer2::GenerateTrajectory(double d_xd, 
-                                                double d_sample_time, 
-                                                int i_num_points 
-                                                )
-{
-    // Interpolate the trajectory from 0 to x desired
-
-    i_trajectory_size_ = i_num_points;
-
-    int i_step_counter = 0;
-
-    double d_time_m = 0.0;    // Trajectory time increased until trajectory total time
-
-    double d_xd_trajectory;                   // Interpolated trajectory value
-    std::vector<double> vec_xd_trajectory;    // Interpolated trajectory vector which receives the interpolated values
-    while(i_step_counter <= i_num_points)  // While the trajectory step counter has not reached the traj. number of points yet, get the next point
-    {        
-        // The trajectory point is calculated based on a fraction of the trajectory total time (sample_time*number_of_points)
-        d_xd_trajectory = d_xd * (d_time_m / (d_sample_time * i_num_points));          
-        d_time_m += d_sample_time;  // Increase the trajectory time
-        i_step_counter++;           // Increase the trajectory step
-        vec_xd_trajectory.push_back(d_xd_trajectory);
-    }
-    vecd_x_trajectory_ = vec_xd_trajectory;     // Store the trajectory on the Drawer2 object
-    return(vec_xd_trajectory);
-}
-
-//----------------------------------------------------------------------------
 std::vector<double> Drawer2::GenerateTrajectoryWithMultipleSegments(std::vector<double> d_xd, 
                                                                     double d_sample_time, 
                                                                     std::vector<int> i_num_points
@@ -94,17 +66,6 @@ void Drawer2::PrintVector(std::vector<double> vec_vector)
     {
         std::cerr << "vec_vector[" << ii << "]" << " = " << vec_vector[ii] << std::endl;
     }
-}
-
-//----------------------------------------------------------------------------
-void Drawer2::IncreaseTrajectoryCounter()
-{ 
-    // Instead of creating a counter in the program, increase a counter from the Drawer
-    // Avoid needing to add more counters to the program itself    
-    if(i_trajectory_counter_ <  vecd_x_trajectory_.size()-1)
-    {
-        i_trajectory_counter_++;
-    }    
 }
 
 //----------------------------------------------------------------------------
@@ -168,12 +129,6 @@ void Drawer2::PrintTrajectoryToFile(std::string output_dir, std::string subfolde
   }
 
   oftstream_vecd_x_trajectory.close();
-}
-
-//----------------------------------------------------------------------------
-int Drawer2::GetTrajectorySize()
-{
-  return i_trajectory_size_;
 }
 
 //----------------------------------------------------------------------------
