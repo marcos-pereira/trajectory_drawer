@@ -16,7 +16,7 @@ Use the Drawer plotter to plot the generated trajectory
 ```
 python DrawerPlotter2.py x_trajectory_file.txt y_trajectory_file.txt z_trajectory_file.txt 
 ```
-
+The trajectory is plotted on the coordinate axes x, y and z and can be seen in the file x_trajectory_file.txt.pdf
 
 # How to use the Drawer
 1. Declare a Drawer2 object and a desired sample time
