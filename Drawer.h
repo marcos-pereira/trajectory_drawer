@@ -33,7 +33,9 @@ class Drawer2
 
         std::vector<double> GenerateTrajectoryWithMultipleSegments(std::vector<double> d_xd,      // Desired trajectory point
                                                                    double d_sample_time,          // Sample time of control loop
-                                                                   std::vector<int> i_num_points // Number of points of desired trajectory
+                                                                   std::vector<int> i_num_points, // Number of points of desired trajectory
+                                                                   std::vector<std::string> trajectory_type,
+                                                                   std::vector<double> circular_radius
                                                                    );
 
 
